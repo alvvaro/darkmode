@@ -1,30 +1,22 @@
-const chk = document.getElementById("chk");
-const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const darkModeCheck = document.getElementById("chk");
+const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-const setThemeAttribute = wantDark => {
+const setDarkmode = wantDark => {
   if (wantDark) {
     document.documentElement.setAttribute("data-theme", "dark");
+    darkModeCheck.checked = true;
   } else {
     document.documentElement.setAttribute("data-theme", "default");
+    darkModeCheck.checked = false;
   }
 };
 
-const setCheckbox = wantDark => {
-  if (wantDark) {
-    chk.checked = true
-  } else {
-    chk.checked = false
-  }
-};
+setDarkmode(darkMediaQuery.matches);
 
-setThemeAttribute(darkMediaQuery.matches);
-setCheckbox(darkMediaQuery.matches);
-
-chk.addEventListener('change', (e) => {
-  setThemeAttribute(e.target.checked);
+darkModeCheck.addEventListener("change", (e) => {
+  setDarkmode(e.target.checked);
 });
 
 darkMediaQuery.addEventListener("change", () => {
-  setThemeAttribute(darkMediaQuery.matches);
-  setCheckbox(darkMediaQuery.matches);
+  setDarkmode(darkMediaQuery.matches);
 });

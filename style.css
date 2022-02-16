@@ -1,0 +1,11 @@
+:root {
+  --bg: lightblue;
+}
+
+[data-theme="dark"] {
+  --bg: darkblue;
+}
+
+html {
+  background-color: var(--bg);
+}
